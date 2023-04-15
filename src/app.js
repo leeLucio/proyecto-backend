@@ -5,10 +5,7 @@ import cartsRouter from "./routes/carts.router.js"
 const app = express()
 app.use(express.json())
 
-app.get("/", (req, res) => {
-  console.log("Alguien hizo una peticion ...")
-  res.send("<h1>Hola mundo!!!</h1>")
-})
+app.use(express.static("public"))
 
 app.use("/api/products", productsRouter)
 app.use("/api/carts", cartsRouter)
