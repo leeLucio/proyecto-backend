@@ -49,9 +49,8 @@ class ProductManager {
 
     if (!product) {
       console.error("Not found")
-    } else {
-      return product
     }
+    return product
   }
 
   updateProduct = (id, object) => {
