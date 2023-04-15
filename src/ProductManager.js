@@ -2,7 +2,7 @@ import fs from "fs"
 
 class ProductManager {
   #path
-  #writeFile = (content) =>{
+  #writeFile = (content) => {
     fs.writeFileSync(this.#path, JSON.stringify(content, null, "\t"))
   }
 
@@ -10,8 +10,8 @@ class ProductManager {
     this.#path = filename
   }
 
-  addProduct = ({ title, description, price, thumbnail, code, stock }) => {
-    if (!title || !description || !price || !thumbnail || !stock || !code) {
+  addProduct = ({ title, description, code, price, status, stock, category, thumbnails }) => {
+    if (!title || !description || !code || !price || status === undefined || !stock || !category) {
       console.error("Missing parameters")
       return
     }
@@ -26,10 +26,12 @@ class ProductManager {
     let producto = {
       title: title,
       description: description,
-      price: price,
-      thumbnail: thumbnail,
       code: code,
+      price: price,
+      status: status === undefined ? true : status,
       stock: stock,
+      category: category,
+      thumbnails: thumbnails ? thumbnails : [],
       id: products.length ? products[products.length - 1].id + 1 : 1
     }
 
@@ -55,13 +57,13 @@ class ProductManager {
   updateProduct = (id, object) => {
     const products = this.getProducts()
     const product = products.find(prod => prod.id === id)
-    if(!product){
+    if (!product) {
       console.error("Not found")
       return
     }
 
     for (const key in object) {
-      if (key) {
+      if (key && key !== "code" && key !== "id") {
         product[key] = object[key]
       }
     }
