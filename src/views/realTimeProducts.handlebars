@@ -1,0 +1,29 @@
+<h1>Productos en tiempo real</h1>
+
+<form id="addProduct">
+	<legend>Agregar producto</legend>
+	<input type="text" name="title" placeholder="title">
+	<input type="text" name="description" placeholder="description">
+	<input type="text" name="code" placeholder="code">
+	<input type="number" name="price" placeholder="price">
+	<input type="bool" name="status" placeholder="status">
+	<input type="number" name="stock" placeholder="stock">
+	<input type="text" name="category" placeholder="category">
+
+	<input type="submit" value="Agregar">
+</form>
+
+<form id="deleteProduct">
+	<legend>Eliminar producto</legend>
+	<input type="number" name="id" placeholder="id">
+	<input type="submit" value="Eliminar">
+</form>
+
+<div>
+	<h2>Lista de productos</h2>
+	<div id="productsList">
+	</div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/index.js"></script>

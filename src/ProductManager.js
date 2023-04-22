@@ -28,7 +28,7 @@ class ProductManager {
       description: description,
       code: code,
       price: price,
-      status: status === undefined ? true : status,
+      status: status === "false" ? false : true,
       stock: stock,
       category: category,
       thumbnails: thumbnails ? thumbnails : [],
